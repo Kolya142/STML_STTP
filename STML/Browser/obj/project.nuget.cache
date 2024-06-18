@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "/7i/sk/60Bf9It9llyyYnqMivvc0xN0XY5Yg6jQmrrBg5ZVoJHQsSWkkYH/q9fr1sGd3KGHHGfCB/Qr1VuLiaw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sony\\Documents\\STML_STTP\\STML\\Browser\\Browser.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sony\\.nuget\\packages\\csfml\\2.6.1\\csfml.2.6.1.nupkg.sha512",
+    "C:\\Users\\sony\\.nuget\\packages\\sfml.audio\\2.6.0\\sfml.audio.2.6.0.nupkg.sha512",
+    "C:\\Users\\sony\\.nuget\\packages\\sfml.graphics\\2.6.0\\sfml.graphics.2.6.0.nupkg.sha512",
+    "C:\\Users\\sony\\.nuget\\packages\\sfml.net\\2.6.0\\sfml.net.2.6.0.nupkg.sha512",
+    "C:\\Users\\sony\\.nuget\\packages\\sfml.system\\2.6.0\\sfml.system.2.6.0.nupkg.sha512",
+    "C:\\Users\\sony\\.nuget\\packages\\sfml.window\\2.6.0\\sfml.window.2.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
