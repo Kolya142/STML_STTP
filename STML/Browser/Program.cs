@@ -23,8 +23,12 @@ class Program
 		List<PreDrawable> preDrawables = Parser.Parse(
 			"Text: Hello, world\n" +
 			"Text: Hello, STML\n" +
-			"Text: Yeah, This code doesn't ship with STTP, but it's cool" +
-			"Image: \"C:\\Users\\sony\\Pictures\\00000-2362403412.png\"",
+			"Text: See Replacements<gh> \n" +
+			"Text: <a>gh<b> - \"<gh>\"\n" +
+			"Text: <a>a<b> - \"<a>\"\n" +
+			"Text: <a>b<b> - \"<b>\"\n" +
+			"Text: Yeah, This code doesn't ship with STTP, but it's cool\n"
+			,
 			font
 			);
 		int op = 0;
