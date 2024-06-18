@@ -6,6 +6,12 @@ hr:
 Image: CuteDog.png
 Button: doges.tmsl: Смотрите страницу о собаках
 ```
+Замены
+```
+<gh> - ":"
+<a> - "<"
+<b> - ">"
+```
 ## Браузер
 ### ACF
 Automatic Control Forms
