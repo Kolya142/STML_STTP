@@ -197,3 +197,4 @@ C:\Users\sony\Documents\STML_STTP\STML\Browser\obj\Debug\net6.0\Browser.pdb
 C:\Users\sony\Documents\STML_STTP\STML\Browser\obj\Debug\net6.0\Browser.genruntimeconfig.cache
 C:\Users\sony\Documents\STML_STTP\STML\Browser\obj\Debug\net6.0\ref\Browser.dll
 C:\Users\sony\Documents\STML_STTP\STML\Browser\bin\Debug\net6.0\WhiteRabbit-47pD.ttf
+C:\Users\sony\Documents\STML_STTP\STML\Browser\bin\Debug\net6.0\test_img.png

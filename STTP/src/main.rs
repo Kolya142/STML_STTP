@@ -31,6 +31,7 @@ fn handle_client(mut stream: TcpStream) {
     };
     let mut errored = true;
     let mut rs: Vec<u8> = fs::read("pages/404.stml").unwrap();
+    println!("\"\"{}\"\"", rq_url);
     if rq_url == "/" {
         let data = fs::read("pages/index.stml");
         if data.is_err() {

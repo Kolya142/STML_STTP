@@ -26,9 +26,9 @@ namespace Browser
 					continue;
 				}
 
-				if (sp.Length == 1)
+				if (sp.Length == 2)
 				{
-					if (sp[0] == "HR")
+					if (sp[0] == "Hr")
 					{
 						Commands.Add(new CHr());
 					}
@@ -50,7 +50,7 @@ namespace Browser
 				{
 					if (sp[0] == "Button")
 					{
-						Commands.Add(new CButton { text = sp[1].Replace("<gh>", ":").Replace("<a>", "<").Replace("<b>", ">"), font = font, page = sp[2] });
+						Commands.Add(new CButton { text = sp[1].Replace("<gh>", ":").Replace("<a>", "<").Replace("<b>", ">"), font = font, page = sp[2].Trim().Replace("\n", "").Replace("\r", "") });
 					}
 				}
 			}

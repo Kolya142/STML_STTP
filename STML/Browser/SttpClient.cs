@@ -20,6 +20,7 @@ namespace Browser
 		public void GenerateHeader(string path, string browser)
 		{
 			this.request = $"STTP {path}\nBrowser: {browser}\n";
+			Console.WriteLine(this.request);
 		}
 
 		public void AddHeader(string text)
@@ -52,7 +53,6 @@ namespace Browser
 					Console.WriteLine("Unable to connect to the server.");
 					return null;
 				}
-
 				client.Send(Encoding.UTF8.GetBytes(request));
 
 				client.ReceiveTimeout = 1000; // Установим тайм-аут для получения данных

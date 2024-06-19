@@ -50,7 +50,7 @@ static class CreateDrawable
 
 	public static (Drawable?, float, string?) CreateHr(CHr _)
 	{
-		RectangleShape rect = new RectangleShape(new Vector2f(100000000000, 3));
-		return (rect, rect.Size.Y, null);
+		RectangleShape rect = new RectangleShape(new Vector2f(3000, 3));
+		return (rect, 3, null);
 	}
 }

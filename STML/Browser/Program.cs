@@ -63,7 +63,7 @@ class Program
 				{
 					if (drawable.Item1 is Transformable transformable)
 					{
-						transformable.Position = new Vector2f(transformable.Position.X, y + program.scroll);
+						transformable.Position = new Vector2f(transformable.Position.X, y + program.scroll + 30);
 					}
 					if (preDrawable.GetType() == typeof(CButton))
 					{
@@ -99,6 +99,15 @@ class Program
 				program.scroll = -y+50;
 			}
 
+			RectangleShape shape = new RectangleShape(new Vector2f((int)window.Size.X, 30));
+			shape.FillColor = Color.Blue;
+			window.Draw(shape);
+			Text url_text = new Text($"{client.ip}:{client.port}{client.request.Split("\n")[0].Split(" ")[1]}", font);
+			Text better_fly_text = new Text("BetterFly Browser", font);
+			url_text.Position = new(0, -5);
+			better_fly_text.Position = new(window.Size.X-300, -5);
+			window.Draw(url_text);
+			window.Draw(better_fly_text);
 			// Display the contents of the window
 			window.Display();
 		}
