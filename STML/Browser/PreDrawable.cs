@@ -21,6 +21,14 @@ namespace Browser
 		public Font font;
 		public string page;
 	}
+	public struct CGButton : PreDrawable
+	{
+		public string text;
+		public Font font;
+		public string ip;
+		public string port;
+		public string page;
+	}
 	public struct CImage : PreDrawable
 	{
 		public byte[] bytes;

@@ -19,6 +19,10 @@ static class CreateDrawable
 		{
 			return CreateButton((CButton)preDrawable);
 		}
+		if (preDrawable.GetType() == typeof(CGButton))
+		{
+			return CreateGButton((CGButton)preDrawable);
+		}
 		if (preDrawable.GetType() == typeof(CHr))
 		{
 			return CreateHr((CHr)preDrawable);
@@ -46,6 +50,12 @@ static class CreateDrawable
 	{
 		Text text = new Text(pd.text, pd.font);
 		return (text, text.GetLocalBounds().Height, pd.page);
+	}
+
+	public static (Drawable?, float, string?) CreateGButton(CGButton pd)
+	{
+		Text text = new Text(pd.text, pd.font);
+		return (text, text.GetLocalBounds().Height, $"{pd.ip}: {pd.port}: {pd.page}");
 	}
 
 	public static (Drawable?, float, string?) CreateHr(CHr _)

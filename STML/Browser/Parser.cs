@@ -53,6 +53,20 @@ namespace Browser
 						Commands.Add(new CButton { text = sp[1].Replace("<gh>", ":").Replace("<a>", "<").Replace("<b>", ">"), font = font, page = sp[2].Trim().Replace("\n", "").Replace("\r", "") });
 					}
 				}
+
+				if (sp.Length == 5)
+				{
+					if (sp[0] == "GButton")
+					{
+						Commands.Add(
+							new CGButton { 
+								text = sp[1].Replace("<gh>", ":").Replace("<a>", "<").Replace("<b>", ">"), 
+								font = font, 
+								ip = sp[2].Trim().Replace("\n", "").Replace("\r", ""),
+								port = sp[3].Trim().Replace("\n", "").Replace("\r", ""),
+								page = sp[4].Trim().Replace("\n", "").Replace("\r", "") });
+					}
+				}
 			}
 			return Commands;
 		}

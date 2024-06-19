@@ -55,7 +55,7 @@ namespace Browser
 				}
 				client.Send(Encoding.UTF8.GetBytes(request));
 
-				client.ReceiveTimeout = 1000; // Установим тайм-аут для получения данных
+				client.ReceiveTimeout = 4000; // Установим тайм-аут для получения данных
 
 				byte[] buffer = new byte[1024];
 				int totalBytes = 0;

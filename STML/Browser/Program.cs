@@ -87,6 +87,32 @@ class Program
 							}
 						}
 					}
+					if (preDrawable.GetType() == typeof(CGButton))
+					{
+						string[] sp = drawable.Item3.Split(": ");
+						string ip = sp[0];
+						string port = sp[1];
+						string page = sp[2];
+						Vector2i Pos = Mouse.GetPosition(window);
+						FloatRect floatRect = (drawable.Item1 as Text).GetGlobalBounds();
+						if (floatRect.Contains(Pos))
+						{
+
+							if (drawable.Item1 is Text text)
+							{
+								text.FillColor = Color.Blue;
+							}
+							if (Mouse.IsButtonPressed(Mouse.Button.Left))
+							{
+								client.Rebind(ip, int.Parse(port));
+								client.GenerateHeader(page, "BetterFly");
+								recived = client.Send();
+								Console.WriteLine(recived);
+								Console.WriteLine(recived.Length);
+								preDrawables = Parser.Parse(recived, font);
+							}
+						}
+					}
 					// Console.WriteLine(scroll);
 					// Console.WriteLine($"{drawable.Item2}, {y}");
 					window.Draw(drawable.Item1);
