@@ -29,7 +29,8 @@ fn handle_client(mut stream: TcpStream) {
         let a: Vec<&str> = rq.split(' ').collect();
         a[1]
     };
-    let mut rs: Vec<u8> = b"Text: 404<gh> Page Not Found".to_vec();
+    let mut errored = true;
+    let mut rs: Vec<u8> = fs::read("pages/404.stml").unwrap();
     if rq_url == "/" {
         let data = fs::read("pages/index.stml");
         if data.is_err() {
@@ -38,10 +39,20 @@ fn handle_client(mut stream: TcpStream) {
         }
         rs = data.unwrap();
     }
-    if rs == b"Text: 404<gh> Page Not Found".to_vec() {
-        stream.write(b"ERR").expect("Cannot Write Tcp Stream");
+    else if rq_url == "/i" {
+        let data = fs::read("pages/i.stml");
+        if data.is_err() {
+            stream.write(&[0x34, 0x30, 0x34]).expect("Cannot Write Tcp Stream");
+            return;
+        }
+        rs = data.unwrap();
     }
     else {
+        errored = true;
+        println!("{}", rq);
+        stream.write(b"ERR").expect("Cannot Write Tcp Stream");
+    }
+    if !errored {
         stream.write(b"OK").expect("Cannot Write Tcp Stream");
     }
     stream.write(b"\nSERVER: simple sttp server\n\n").expect("Cannot Write Tcp Stream");
@@ -49,7 +60,7 @@ fn handle_client(mut stream: TcpStream) {
 }
 
 fn main() -> std::io::Result<()> {
-    let listener = TcpListener::bind("127.0.0.1:80")?;
+    let listener = TcpListener::bind("127.0.0.1:91")?;
 
     // accept connections and process them serially
     for stream in listener.incoming() {

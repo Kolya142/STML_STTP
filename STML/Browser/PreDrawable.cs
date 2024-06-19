@@ -15,6 +15,12 @@ namespace Browser
 		public string text;
 		public Font font;
 	}
+	public struct CButton : PreDrawable
+	{
+		public string text;
+		public Font font;
+		public string page;
+	}
 	public struct CImage : PreDrawable
 	{
 		public byte[] bytes;

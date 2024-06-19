@@ -5,3 +5,12 @@ Text: <a>gh<b> - "<gh>"
 Text: <a>a<b> - "<a>"
 Text: <a>b<b> - "<b>"
 Text: This code now ship with STTP, it's cool
+HR:
+hr
+Text: Plans<gh>
+Text: Add Text1, Text2 and Text3 tags
+Text: Fix hr
+Text: Add Buttons<gh> Button, GButton
+Text: Button<gh> Redirect to page
+Text: GButton<gh> Redirect to page on another ip
+Button: Click There: /i

@@ -12,6 +12,12 @@ class Program
 	}
 	static void Main()
 	{
+		SttpClient client = new SttpClient(port: 91);
+		client.GenerateHeader("/", "BetterFly");
+		string recived = client.Send();
+		Console.WriteLine(recived);
+		Console.WriteLine(recived.Length);
+
 		Program program = new Program();
 		// Create a new window
 		RenderWindow window = new RenderWindow(new VideoMode(800, 600), "SFML.Net Window");
@@ -21,13 +27,7 @@ class Program
 
 		// Create a circle shape
 		List<PreDrawable> preDrawables = Parser.Parse(
-			"Text: Hello, world\n" +
-			"Text: Hello, STML\n" +
-			"Text: See Replacements<gh> \n" +
-			"Text: <a>gh<b> - \"<gh>\"\n" +
-			"Text: <a>a<b> - \"<a>\"\n" +
-			"Text: <a>b<b> - \"<b>\"\n" +
-			"Text: Yeah, This code doesn't ship with STTP, but it's cool\n"
+			recived
 			,
 			font
 			);
@@ -54,12 +54,38 @@ class Program
 
 			foreach (PreDrawable preDrawable in preDrawables)
 			{
-				(Drawable?, float) drawable = CreateDrawable.CreateFromPreDrawable(preDrawable);
+				/*Vector2i Pos = Mouse.GetPosition(window);
+				  FloatRect floatRect = this.label.GetLocalBounds();
+				  if ( floatRect.Left < Pos.X && Pos.X < floatRect.Left + floatRect.Width &&
+				      floatRect.Top < Pos.Y && Pos.Y < floatRect.Top + floatRect.Height) */
+				(Drawable?, float, string?) drawable = CreateDrawable.CreateFromPreDrawable(preDrawable);
 				if (drawable.Item1 != null)
 				{
 					if (drawable.Item1 is Transformable transformable)
 					{
 						transformable.Position = new Vector2f(transformable.Position.X, y + program.scroll);
+					}
+					if (preDrawable.GetType() == typeof(CButton))
+					{
+						string page = drawable.Item3;
+						Vector2i Pos = Mouse.GetPosition(window);
+						FloatRect floatRect = (drawable.Item1 as Text).GetGlobalBounds();
+						if (floatRect.Contains(Pos))
+						{
+
+							if (drawable.Item1 is Text text)
+							{
+								text.FillColor = Color.Blue;
+							}
+							if (Mouse.IsButtonPressed(Mouse.Button.Left))
+							{
+								client.GenerateHeader(drawable.Item3, "BetterFly");
+								recived = client.Send();
+								Console.WriteLine(recived);
+								Console.WriteLine(recived.Length);
+								preDrawables = Parser.Parse(recived, font);
+							}
+						}
 					}
 					// Console.WriteLine(scroll);
 					// Console.WriteLine($"{drawable.Item2}, {y}");
