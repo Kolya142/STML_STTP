@@ -40,8 +40,24 @@ fn handle_client(mut stream: TcpStream) {
         }
         rs = data.unwrap();
     }
+    if rq_url == "/test_img" {
+        let data = fs::read("pages/test_img.png");
+        if data.is_err() {
+            stream.write(&[0x34, 0x30, 0x34]).expect("Cannot Write Tcp Stream");
+            return;
+        }
+        rs = data.unwrap();
+    }
     else if rq_url == "/i" {
         let data = fs::read("pages/i.stml");
+        if data.is_err() {
+            stream.write(&[0x34, 0x30, 0x34]).expect("Cannot Write Tcp Stream");
+            return;
+        }
+        rs = data.unwrap();
+    }
+    else if rq_url == "/brug" {
+        let data = fs::read("pages/brug.stml");
         if data.is_err() {
             stream.write(&[0x34, 0x30, 0x34]).expect("Cannot Write Tcp Stream");
             return;

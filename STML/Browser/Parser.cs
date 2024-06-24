@@ -10,7 +10,7 @@ namespace Browser
 {
 	static class Parser
 	{
-		public static List<PreDrawable> Parse(string code, Font font)
+		public static List<PreDrawable> Parse(string code, Font font, SttpClient sttpClient)
 		{
 			List<PreDrawable> Commands = new List<PreDrawable>();
 			foreach (var line in code.Split("\n"))
@@ -42,7 +42,8 @@ namespace Browser
 					}
 					else if (sp[0] == "Image")
 					{
-						Commands.Add(new CImage {bytes = File.ReadAllBytes(sp[0])});
+						sttpClient.GenerateHeader(sp[1], "BetterFly");
+						Commands.Add(new CImage {bytes=sttpClient.Get()});
 					}
 				}
 

@@ -29,7 +29,7 @@ class Program
 		List<PreDrawable> preDrawables = Parser.Parse(
 			recived
 			,
-			font
+			font, client
 			);
 		int op = 0;
 
@@ -83,7 +83,7 @@ class Program
 								recived = client.Send();
 								Console.WriteLine(recived);
 								Console.WriteLine(recived.Length);
-								preDrawables = Parser.Parse(recived, font);
+								preDrawables = Parser.Parse(recived, font, client);
 							}
 						}
 					}
@@ -109,7 +109,7 @@ class Program
 								recived = client.Send();
 								Console.WriteLine(recived);
 								Console.WriteLine(recived.Length);
-								preDrawables = Parser.Parse(recived, font);
+								preDrawables = Parser.Parse(recived, font, client);
 							}
 						}
 					}

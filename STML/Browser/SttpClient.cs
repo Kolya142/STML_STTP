@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Browser
 {
-	class SttpClient
+	public class SttpClient
 	{
 		public string ip;
 		public int port;
@@ -34,7 +34,7 @@ namespace Browser
 			this.port = port;
 		}
 
-		public string Send()
+		public byte[] Get()
 		{
 			using (Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
 			{
@@ -57,7 +57,7 @@ namespace Browser
 
 				client.ReceiveTimeout = 4000; // Установим тайм-аут для получения данных
 
-				byte[] buffer = new byte[1024];
+				byte[] buffer = new byte[1024 * 64];
 				int totalBytes = 0;
 				int receivedBytes;
 
@@ -79,8 +79,13 @@ namespace Browser
 				client.Shutdown(SocketShutdown.Both);
 				client.Close();
 
-				return Encoding.UTF8.GetString(buffer, 0, totalBytes);
+				return buffer.Take(totalBytes).ToArray();
 			}
+		}
+
+		public string Send()
+		{
+			return Encoding.UTF8.GetString(Get());
 		}
 	}
 }
